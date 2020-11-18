@@ -43,7 +43,7 @@ app.listen(PORT, function () {
 
 let emailToSendFrom = "user@gmail.com"      //email to send from
 let emailPassword = 'pass'              //password
-let emailToSendTo = 'user@oregonstate.edu'  //email to send to.           
+let emailToSendTo = 'email@oregonstate.edu'  //email to send to.           
 
 
 
@@ -60,15 +60,19 @@ let lastEmailSentAt;
 
 let firstTime = true;
 
-const timeBetweenChecks = 600000   //in milliseconds. Currently will check once every hour
+let timeBetweenChecks = 150000   //in milliseconds. Currently will check once every hour
 
 //set this to how many changes you want to receive an email at... i.e. 10 means if 10 people join the class
 //you get an email
-let changeToUpdateAt = 10;
+let changeToUpdateAt = 5;
 
 
 //SET THIS to whatever you want to send an email at to update for every number that's different after this.
 let panicMode = 30;
+
+
+//how much time goes in between checks once we're in panic mode. 
+let panicTime = 30000;      //5 minutes
 
 
 
@@ -122,6 +126,7 @@ function getData() {
             lastEmailSentAt = spacesLeft
             sendEmail();
         }else if(spacesLeft <= panicMode && lastEmailSentAt != spacesLeft){
+            timeBetweenChecks = panicTime
             lastEmailSentAt == spacesLeft
             sendEmail();
         }
