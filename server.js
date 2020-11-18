@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 3000;
 
 
 const emailToSendFrom = process.env.fromEmail || "userEmail@gmail.com"      //email to send from
-const emailPassword = process.env.fromPassword || 'password'              //password
+const emailPassword = process.env.emailPassword || 'password'              //password
 const emailToSendTo = process.env.toEmail || 'user@oregonstate.edu'  //email to send to.   
 
 let className = "CS344" //change this to be whatever class name
