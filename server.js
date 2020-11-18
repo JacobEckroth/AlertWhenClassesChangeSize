@@ -18,6 +18,31 @@ const e = require('express');
 const PORT = process.env.PORT || 3000;
 
 
+const emailToSendFrom = process.env.fromEmail || "userEmail@gmail.com"      //email to send from
+const emailPassword = process.env.fromPassword || 'password'              //password
+const emailToSendTo = process.env.toEmail || 'user@oregonstate.edu'  //email to send to.   
+
+let className = "CS344" //change this to be whatever class name
+
+
+//make sure this is a link to a search that only shows up one class. Search by CRN if you have to.
+//example here is for CS344
+let url = "https://classes.oregonstate.edu/?keyword=cs344&srcdb=202102&camp=C"
+
+
+let timeBetweenChecks = 150000   //in milliseconds. Currently will check once every hour
+
+//set this to how many changes you want to receive an email at... i.e. 10 means if 10 people join the class
+//you get an email
+let changeToUpdateAt = 5;
+
+
+//SET THIS to whatever you want to send an email at to update for every number that's different after this.
+let panicMode = 30;
+
+
+//how much time goes in between checks once we're in panic mode. 
+let panicTime = 30000;      //5 minutes
 
 
 
@@ -41,41 +66,12 @@ app.listen(PORT, function () {
 
 //assumes you're using gmail. Might need to change some stuff in nodemailer if you aren't.
 
-let emailToSendFrom = "user@gmail.com"      //email to send from
-let emailPassword = 'pass'              //password
-let emailToSendTo = 'email@oregonstate.edu'  //email to send to.           
-
-
-
-let className = "CS000" //change this to be whatever class name
-
-
-
-//make sure this is a link to a search that only shows up one class. Search by CRN if you have to.
-//example here is for CS344
-let url = "https://classes.oregonstate.edu/?keyword=cs344&srcdb=202102&camp=C"
+        
 
 
 let lastEmailSentAt;
 
 let firstTime = true;
-
-let timeBetweenChecks = 150000   //in milliseconds. Currently will check once every hour
-
-//set this to how many changes you want to receive an email at... i.e. 10 means if 10 people join the class
-//you get an email
-let changeToUpdateAt = 5;
-
-
-//SET THIS to whatever you want to send an email at to update for every number that's different after this.
-let panicMode = 30;
-
-
-//how much time goes in between checks once we're in panic mode. 
-let panicTime = 30000;      //5 minutes
-
-
-
 
 let spacesLeft;
 startListeningForClass();
@@ -137,8 +133,8 @@ function getData() {
 }
 
 
-
 //READ THE README.MD IF THIS ISN"T WORKING!!!!
+//or go here https://stackoverflow.com/questions/45478293/username-and-password-not-accepted-when-using-nodemailer
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
