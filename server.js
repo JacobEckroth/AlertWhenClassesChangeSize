@@ -30,7 +30,7 @@ let className = "CS344" //change this to be whatever class name
 let url = "https://classes.oregonstate.edu/?keyword=cs344&srcdb=202102&camp=C"
 
 
-let timeBetweenChecks = 150000   //in milliseconds. Currently will check once every hour
+let timeBetweenChecks = 900000   //in milliseconds. Currently will check once every fifteen minutes
 
 //set this to how many changes you want to receive an email at... i.e. 10 means if 10 people join the class
 //you get an email
