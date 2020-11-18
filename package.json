@@ -1,0 +1,23 @@
+{
+  "name": "showmemyschedules",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node node_modules/nodemon/bin/nodemon.js server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "jsdom": "^16.4.0",
+    "nodemailer": "^6.4.16",
+    "nodemon": "^2.0.4",
+    "puppeteer": "^5.3.1",
+    "request": "^2.88.2"
+  }
+}
