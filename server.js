@@ -106,12 +106,15 @@ function getData() {
         let splitResult = result.split(':')
      
         let fixedResult = Number(splitResult[1].substr(1))
-        if(firstTime){
-            spacesLeft = fixedResult;
-            firstTime = false
-        }
         spacesLeft = fixedResult;
         console.log(fixedResult);
+
+        if(firstTime){
+            sendEmail()
+            lastEmailSentAt = spacesLeft;
+            firstTime = false
+        }
+   
 
 
 
