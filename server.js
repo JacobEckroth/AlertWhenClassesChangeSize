@@ -42,7 +42,7 @@ app.listen(PORT, function () {
 //assumes you're using gmail. Might need to change some stuff in nodemailer if you aren't.
 
 let emailToSendFrom = "user@gmail.com"      //email to send from
-let emailPassword = 'password'              //password
+let emailPassword = 'pass'              //password
 let emailToSendTo = 'user@oregonstate.edu'  //email to send to.           
 
 
@@ -118,7 +118,7 @@ function getData() {
 
 
 
-        if(spacesLeft <= lastEmailSentAt -10){
+        if(spacesLeft <= lastEmailSentAt -changeToUpdateAt){
             lastEmailSentAt = spacesLeft
             sendEmail();
         }else if(spacesLeft <= panicMode && lastEmailSentAt != spacesLeft){
