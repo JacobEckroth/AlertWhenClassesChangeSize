@@ -16,11 +16,11 @@ const {
 const jsdom = require('jsdom');
 const e = require('express');
 const PORT = process.env.PORT || 3000;
+var auth = require('./auth.json');
 
-
-const emailToSendFrom = process.env.fromEmail || "userEmail@gmail.com"      //email to send from
-const emailPassword = process.env.emailPassword || 'password'              //password
-const emailToSendTo = process.env.toEmail || 'user@oregonstate.edu'  //email to send to.   
+const emailToSendFrom = process.env.fromEmail || auth.fromEmail      //email to send from
+const emailPassword = process.env.emailPassword || auth.emailPassword//password
+const emailToSendTo = process.env.toEmail || auth.toEmail  //email to send to.   
 
 let className = "CS344" //change this to be whatever class name
 
@@ -108,6 +108,7 @@ function getData() {
         let fixedResult = Number(splitResult[1].substr(1))
         spacesLeft = fixedResult;
         console.log(fixedResult);
+        console.log("Email last sent at: " + lastEmailSentAt + " Spaces")
 
         if(firstTime){
             sendEmail()
