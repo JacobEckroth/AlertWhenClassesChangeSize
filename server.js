@@ -124,7 +124,7 @@ function getData() {
             sendEmail();
         }else if(spacesLeft <= panicMode && lastEmailSentAt != spacesLeft){
             timeBetweenChecks = panicTime
-            lastEmailSentAt == spacesLeft
+            lastEmailSentAt = spacesLeft
             sendEmail();
         }
    
